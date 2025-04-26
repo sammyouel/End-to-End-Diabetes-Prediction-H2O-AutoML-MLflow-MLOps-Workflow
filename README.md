@@ -23,24 +23,26 @@ This project implements a robust machine learning pipeline to predict diabetes o
 *   **Deployment Foundation:** Developed a basic **Flask API** (`app.py`) to serve predictions from the saved MOJO model.
 *   **Actionable Insights:** Derived practical recommendations based on model performance and interpretability.
 
+
 ## Project Structure
 
-H2O_Diabetes_Project/
-├── models/ # Saved local models (binary, MOJO)
-├── reports/ # Generated reports (EDA, plots, results CSVs)
-├── tests/ # Unit tests
-├── images/ # Optional: For embedded images in README
-├── .venv/ # Python virtual environment (ignored)
-├── mlruns/ # MLflow tracking data (ignored)
-├── .gitignore # Git ignore file
-├── app.py # Flask API script
-├── config.yaml # Project configuration
-├── diabetes.csv # Dataset
-├── Dockerfile # Docker container definition
-├── predict_diabetes.py # Main training & MLOps script
-├── README.md # This documentation file
-├── requirements.txt # Python dependencies
-└── utils.py # Utility functions
+*   `H2O_Diabetes_Project/`
+    *   `models/` # Saved local models (binary, MOJO) (ignored by git)
+    *   `reports/` # Generated reports (EDA, plots, results CSVs)
+    *   `tests/`
+        *   `test_utils.py` # Unit tests
+    *   `images/` # Optional: For embedded images in README
+    *   `.venv/` # Python virtual environment (ignored by git)
+    *   `mlruns/` # MLflow tracking data (ignored by git)
+    *   `.gitignore` # Git ignore file
+    *   `app.py` # Flask API script
+    *   `config.yaml` # Project configuration
+    *   `diabetes.csv` # Dataset
+    *   `Dockerfile` # Docker container definition
+    *   `predict_diabetes.py` # Main training & MLOps script
+    *   `README.md` # This documentation file
+    *   `requirements.txt` # Python dependencies
+    *   `utils.py` # Utility functions
 
 
 ## Prerequisites
