@@ -1,0 +1,64 @@
+# config.yaml
+# Configuration for the H2O Diabetes Prediction project
+
+project_details:
+  name: "H2O_Diabetes_Prediction"
+  version: "1.1" # Example version
+
+data:
+  file_path: "diabetes.csv"
+  target_variable: "Outcome"
+  test_split_ratio: 0.2 # Fraction for the test set (e.g., 0.2 means 20% test, 80% train)
+  split_seed: 1234
+
+eda:
+  profile_report_path: "reports/diabetes_data_profile.html"
+
+validation:
+  # Define validation checks for key columns (add more as needed)
+  # Pandera check syntax (https://pandera.readthedocs.io/en/stable/reference/generated/pandera.checks.Check.html)
+  # Using string representation for simplicity in YAML; more complex checks might need custom code.
+  schema_checks:
+    Pregnancies: { check_str: "lambda s: s >= 0", dtype: "int" }
+    Glucose: { check_str: "lambda s: s >= 0", dtype: "float", nullable: true }
+    BloodPressure: { check_str: "lambda s: s >= 0", dtype: "float", nullable: true }
+    SkinThickness: { check_str: "lambda s: s >= 0", dtype: "float", nullable: true }
+    Insulin: { check_str: "lambda s: s >= 0", dtype: "float", nullable: true }
+    BMI: { check_str: "lambda s: s >= 0", dtype: "float", nullable: true }
+    DiabetesPedigreeFunction: { check_str: "lambda s: s > 0", dtype: "float", nullable: true }
+    Age: { check_str: "lambda s: s >= 18", dtype: "int" } # Example: Assuming adult patients
+    Outcome: { check_str: "lambda s: s in [0, 1]", dtype: "int" }
+
+h2o:
+  max_mem_size: "4G"
+  nthreads: -1 # Use all available cores
+  init_seed: 42 # Seed for H2O cluster initialization (helps reproducibility slightly)
+
+automl:
+  max_runtime_secs: 300 # Max time for AutoML run in seconds (5 minutes)
+  nfolds: 5 # Number of cross-validation folds
+  balance_classes: true # Handle imbalanced classes
+  sort_metric: "AUC" # Metric to rank models on the leaderboard
+  stopping_metric: "AUC" # Metric for early stopping within models
+  stopping_tolerance: 0.005 # Relative tolerance for stopping metric
+  stopping_rounds: 3 # Number of rounds for early stopping
+  seed: 1 # Seed for AutoML reproducibility
+  project_name: "Diabetes_Prediction_AutoML_Enhanced"
+  # Optional: Specify algorithms to include or exclude
+  # exclude_algos: ["DeepLearning", "StackedEnsemble"]
+  # include_algos: ["GBM", "GLM", "XGBoost", "DRF"]
+
+mlflow:
+  experiment_name: "Diabetes Prediction Experiments"
+  run_name: "H2O_AutoML_Enhanced_Run"
+  autolog: true # Enable MLflow's H2O autologging
+
+output:
+  # Directory to save models and other artifacts
+  model_dir: "models"
+  # Base name for saved models (suffixes like _binary, _mojo will be added)
+  model_base_name: "best_diabetes_model"
+  reports_dir: "reports" # Directory for EDA report, etc.
+
+explainability:
+  generate_shap: true # Attempt to generate SHAP plots if model supports it

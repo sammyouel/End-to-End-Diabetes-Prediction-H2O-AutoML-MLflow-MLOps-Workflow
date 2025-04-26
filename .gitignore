@@ -1,0 +1,24 @@
+# Python Virtual Environment
+.venv/
+
+# MLflow Tracking Data
+mlruns/
+
+# Locally Saved Models Output
+models/
+
+# Generated Reports Output
+reports/
+
+# Pytest Cache
+.pytest_cache/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# VS Code specific settings (optional, uncomment if not sharing)
+# .vscode/
+
+# OS-specific files (optional, good practice)
+.DS_Store
