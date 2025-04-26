@@ -7,8 +7,6 @@ mlruns/
 # Locally Saved Models Output
 models/
 
-# Generated Reports Output
-reports/
 
 # Pytest Cache
 .pytest_cache/
