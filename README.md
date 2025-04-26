@@ -100,7 +100,7 @@ This project implements a robust machine learning pipeline to predict diabetes o
     *   False Negative Rate: **≈ 13.7%** (Model misses about 14% of actual cases)
 *   **EDA Insights:** The automated EDA (`reports/diabetes_data_profile.html`) highlighted potentially unrealistic zero values in `Glucose` (0.7%) and `BloodPressure` (4.6%), suggesting potential data quality issues or specific patient conditions needing consideration. Correlations (`reports/correlations.png` - see below) showed expected relationships like Age/Pregnancies and BMI/SkinThickness. Interaction plots (e.g., Insulin vs BloodPressure) were explored but didn't reveal strong immediate patterns for this analysis.
     *   *Correlation Heatmap:*
-        ![Correlation](reports/Correlations.png.png) 
+        ![Correlation](reports/Correlations.png) 
 *   **Model Interpretation (SHAP):** The SHAP analysis (`reports/shap_summary_plot.png`) confirmed **Glucose** as the most dominant predictor, followed by **BMI** and **Age**. Higher values in these features strongly increase the model's prediction towards diabetes. Other features contributed but had less overall impact magnitude.
 *   **Actionable Recommendations:**
     1.  **Deployment:** Use the model for **risk stratification** due to high sensitivity, flagging patients for confirmatory clinical tests rather than direct diagnosis (mitigates lower precision).
